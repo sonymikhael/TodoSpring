@@ -14,6 +14,7 @@ public class TodoController {
 
     @GetMapping("/all")
     public Iterable<TodoItem> getAll() {
-        return repository.findAll();
+        return repository.findByUserId(2L);
+        //return repository.findAll();
     }
 }
