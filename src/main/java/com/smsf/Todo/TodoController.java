@@ -24,7 +24,7 @@ public class TodoController {
         //return repository.findAll();
     }
 
-    @PutMapping("/{orderId}")
+    @PostMapping
     public TodoItem putTodoItem(@RequestBody TodoItem item) {
         Optional<User> user = userRepo.findById(1L);
         return service.createTodo(item, user.get());

@@ -27,7 +27,8 @@ public class TodoItem {
     private boolean isDone;
 
     @Column(columnDefinition = "timestamp default CURRENT_TIMESTAMP()")
-    private Date createDate;
+    @Builder.Default
+    private Date createDate = new Date();
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
