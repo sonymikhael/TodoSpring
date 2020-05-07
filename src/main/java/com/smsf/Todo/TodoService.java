@@ -4,8 +4,8 @@ package com.smsf.Todo;
 import java.util.Collection;
 
 public interface TodoService {
-    public void createTodo(TodoItem todo);
+    public TodoItem createTodo(TodoItem todo, User user);
     public void update(Long id, TodoItem todo);
-    public void deleteTodo(Long id);
-    public Collection<TodoItem> getAllTodos();
+    public void deleteTodo(Long id, User user);
+    public Collection<TodoItem> getAllTodos(User user);
 }
