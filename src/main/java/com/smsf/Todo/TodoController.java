@@ -18,11 +18,13 @@ public class TodoController {
     @Autowired
     UserRepository userRepo;
 
+    // TODO : security and get user context when processing records
     @GetMapping("/all")
     public Iterable<TodoItem> getAll() {
         return todoRepository.findByUserId(1L);
         //return repository.findAll();
     }
+
 
     @PostMapping
     public TodoItem putTodoItem(@RequestBody TodoItem item) {
