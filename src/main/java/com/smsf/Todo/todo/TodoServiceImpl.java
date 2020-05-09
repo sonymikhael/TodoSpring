@@ -1,7 +1,9 @@
-package com.smsf.Todo;
+package com.smsf.Todo.todo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.smsf.Todo.user.User;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,7 +21,7 @@ public class TodoServiceImpl implements TodoService {
 
     @Override
     public void update(Long id, TodoItem todo) {
-
+ 
     }
 
     @Override
