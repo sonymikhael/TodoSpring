@@ -1,12 +1,12 @@
 package com.smsf.Todo.todo;
 
+import java.util.Collection;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.smsf.Todo.user.User;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 @Service
 public class TodoServiceImpl implements TodoService {
@@ -20,13 +20,21 @@ public class TodoServiceImpl implements TodoService {
     }
 
     @Override
-    public void update(Long id, TodoItem todo) {
+    public void update(TodoItem todo, User user) {
  
     }
 
     @Override
-    public void deleteTodo(Long id, User user) {
-
+    public boolean deleteTodo(Long id, User user) throws UnauthorizedException {
+    	Optional<TodoItem> optionalItem = repo.findById(id);
+    	if (optionalItem.isPresent()) {
+    		TodoItem item = optionalItem.get();
+    		if (!item.getUser().equals(user)) {
+    			throw new UnauthorizedException("User '" + user.getUsername() + "' cannot delete todo item id: " + id);
+    		}
+    		repo.delete(item);
+    	}
+    	return true;
     }
 
     @Override
